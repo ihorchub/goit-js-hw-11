@@ -1,0 +1,22 @@
+.search-form {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: center;
+  height: 60px;
+  background-color: rgb(129, 129, 129);
+}
+
+.search-form input {
+  border-radius: 5px;
+  width: 350px;
+  background-color: rgb(245, 245, 245);
+}
+
+.search-form button {
+  border-radius: 5px;
+  background-color: rgb(55, 155, 255);
+  color: #ffffff;
+  padding-right: 15px;
+  padding-left: 15px;
+}
