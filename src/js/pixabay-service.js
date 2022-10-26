@@ -1,10 +1,12 @@
 import axios from 'axios';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
 export default class PixabayApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
-    this.perPage = 8;
+    this.perPage = 40;
   }
 
   async axiosImages() {
@@ -20,12 +22,20 @@ export default class PixabayApiService {
       page: this.page,
     });
 
+    Loading.circle();
+
     try {
       const response = await axios.get(BASE_URL, { params: searchParams });
+      Loading.remove();
       this.incrementPage();
-      console.log(response.data);
       return response.data;
     } catch {
+      Loading.remove();
+      Report.info(
+        'The request was not processed',
+        'Maybe there is a problem with your internet or the server is not responding. <br/><br/> Try again later',
+        'Okay'
+      );
       console.log(error.message);
     }
   }
