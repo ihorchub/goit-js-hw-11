@@ -1,5 +1,7 @@
 import PixabayApiService from './js/pixabay-service';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const pixabayApiService = new PixabayApiService();
 const numberOfResponses = pixabayApiService.numberOfResponses();
@@ -7,6 +9,12 @@ const numberOfResponses = pixabayApiService.numberOfResponses();
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const loadMore = document.querySelector('.load-more');
+
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+  animationSpeed: 200,
+  fadeSpeed: 150,
+});
 
 searchForm.addEventListener('submit', handleSubmit);
 loadMore.addEventListener('click', handleClick);
@@ -32,6 +40,7 @@ function getImages() {
       notifySearch(data);
     })
     .catch(error => {
+      Notify.failure('Oh, problem! Try again.');
       console.error(error);
     });
 }
@@ -58,9 +67,10 @@ function handleClick() {
     .then(data => {
       notifyLoadMore(data);
       renderMarkupOfImages(data);
-      console.log(data.hits);
+      scroll();
     })
     .catch(error => {
+      Notify.failure('Oh, problem! Try again.');
       console.error(error);
     });
 }
@@ -89,7 +99,8 @@ function renderMarkupOfImages(data) {
         views,
         comments,
         downloads,
-      }) => `<div class="photo-card">
+      }) => `<a href="${largeImageURL}">
+          <div class="photo-card">
           <div class="image">
           <img src="${webformatURL}" alt="${tags}" loading="lazy" />
           </div>
@@ -107,8 +118,19 @@ function renderMarkupOfImages(data) {
               <b>Downloads</b> ${downloads}
             </p>
           </div>
-        </div>`
+        </div></a>`
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', markupImage);
+  lightbox.refresh();
+}
+
+function scroll() {
+  const { height: cardHeight } =
+    gallery.firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 1.3,
+    behavior: 'smooth',
+  });
 }

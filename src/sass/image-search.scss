@@ -2,6 +2,11 @@ body {
   background-color: #ffe6ce;
 }
 
+a {
+  text-decoration: none;
+  color: #7e3a1a;
+}
+
 .form-lining {
   height: 68px;
   background-color: rgb(126, 58, 26, 0.7);
@@ -20,7 +25,7 @@ body {
 .search-form input {
   border: transparent;
   border-radius: 5px;
-  width: 350px;
+  width: 250px;
   padding: 10px;
   background-color: #ffe6ce;
   color: #7e3a1a;
