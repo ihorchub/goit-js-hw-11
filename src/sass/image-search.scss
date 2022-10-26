@@ -1,0 +1,110 @@
+body {
+  background-color: #ffe6ce;
+}
+
+.form-lining {
+  height: 68px;
+  background-color: rgb(126, 58, 26, 0.7);
+}
+
+.search-form {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(126, 58, 26, 0.5);
+}
+
+.search-form input {
+  border: transparent;
+  border-radius: 5px;
+  width: 350px;
+  padding: 10px;
+  background-color: #ffe6ce;
+  color: #7e3a1a;
+  font-weight: 600;
+  box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.46);
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-form input:hover {
+  background-color: #ffb787;
+}
+
+.search-form button,
+.load-more {
+  border: transparent;
+  border-radius: 5px;
+  background-color: #ff7b23;
+  color: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.46);
+  transition-property: background-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-form button {
+  margin-left: 10px;
+}
+
+.load-more {
+  margin-left: 50%;
+  translate: -50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+.search-form button:hover,
+.load-more:hover {
+  background-color: #ffb787;
+  color: #7e3a1a;
+}
+
+.gallery {
+  margin-top: 5px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.photo-card {
+  background-color: #ffffff;
+  padding: 10px;
+  width: 300px;
+}
+
+.image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.photo-card img {
+  display: block;
+  min-height: 200px;
+  height: auto;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.info-item {
+  text-align: center;
+  line-height: 1.7;
+}
