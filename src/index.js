@@ -21,14 +21,24 @@ loadMore.addEventListener('click', handleClick);
 
 function handleSubmit(evt) {
   evt.preventDefault();
-  gallery.innerHTML = '';
-  loadMore.setAttribute('hidden', 'hidden');
 
-  pixabayApiService.query = evt.currentTarget.elements.searchQuery.value;
-  pixabayApiService.resetPage();
-  if (pixabayApiService.query === '') {
+  if (
+    pixabayApiService.query === evt.currentTarget.elements.searchQuery.value
+  ) {
+    Notify.info('Enter a new word in the search field');
     return;
   }
+
+  pixabayApiService.query = evt.currentTarget.elements.searchQuery.value;
+
+  if (pixabayApiService.query.trim() === '') {
+    Notify.info('Enter a word in the search field');
+    return;
+  }
+
+  loadMore.setAttribute('hidden', 'hidden');
+  gallery.innerHTML = '';
+  pixabayApiService.resetPage();
 
   getImages();
 }
@@ -130,7 +140,7 @@ function scroll() {
     gallery.firstElementChild.getBoundingClientRect();
 
   window.scrollBy({
-    top: cardHeight * 1.3,
+    top: cardHeight * 1.4,
     behavior: 'smooth',
   });
 }
